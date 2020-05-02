@@ -53,10 +53,24 @@ export function updateNumericAttribute( key, value, item, writer, defaultValue =
  * @param {module:engine/model/position~Position} insertPosition The position at which the table cell should be inserted.
  * @param {Object} attributes The element attributes.
  */
-export function createEmptyTableCell( writer, insertPosition, attributes = {} ) {
+export function createEmptyTableCell( writer, insertPosition, attributes = {}, isLeft ) {
 	const tableCell = writer.createElement( 'tableCell', attributes );
-	writer.insertElement( 'paragraph', tableCell );
+
+	if(isLeft){
+		const divisionLeft = writer.createElement('divisionLeft');
+		writer.append(divisionLeft,tableCell);
+		writer.appendElement('paragraph', divisionLeft);
+
+	}else{
+		const divisionRight = writer.createElement('divisionRight');
+		writer.append(divisionRight,tableCell);
+		writer.appendElement('paragraph', divisionRight);
+	}
+
 	writer.insert( tableCell, insertPosition );
+
+
+	
 }
 
 /**

@@ -1,4 +1,4 @@
-/**
+ /**
  * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
@@ -122,6 +122,7 @@ export default class TableUtils extends Plugin {
 
 		const insertAt = options.at || 0;
 		const rowsToInsert = options.rows || 1;
+		const isleft = options.isLeft || false;
 
 		model.change( writer => {
 			const headingRows = table.getAttribute( 'headingRows' ) || 0;
@@ -162,7 +163,7 @@ export default class TableUtils extends Plugin {
 				}
 			}
 
-			createEmptyRows( writer, table, insertAt, rowsToInsert, cellsToInsert );
+			createEmptyRows( writer, table, insertAt, rowsToInsert, cellsToInsert, isLeft );
 		} );
 	}
 
@@ -695,14 +696,14 @@ export default class TableUtils extends Plugin {
 // @param {Number} insertAt The row index of row insertion.
 // @param {Number} rows The number of rows to create.
 // @param {Number} tableCellToInsert The number of cells to insert in each row.
-function createEmptyRows( writer, table, insertAt, rows, tableCellToInsert, attributes = {} ) {
-	for ( let i = 0; i < rows; i++ ) {
+function createEmptyRows( writer, table, insertAt, rows, tableCellToInsert, attributes = {} , isLeft) {
+	
 		const tableRow = writer.createElement( 'tableRow' );
 
 		writer.insert( tableRow, table, insertAt );
 
-		createCells( tableCellToInsert, writer, writer.createPositionAt( tableRow, 'end' ), attributes );
-	}
+		createCells( tableCellToInsert, writer, writer.createPositionAt( tableRow, 'end' ), attributes,isLeft );
+	
 }
 
 // Creates cells at a given position.
@@ -710,14 +711,14 @@ function createEmptyRows( writer, table, insertAt, rows, tableCellToInsert, attr
 // @param {Number} columns The number of columns to create
 // @param {module:engine/model/writer~Writer} writer
 // @param {module:engine/model/position~Position} insertPosition
-function createCells( cells, writer, insertPosition, attributes = {} ) {
+function createCells( cells, writer, insertPosition, attributes = {},isLeft ) {
 	for ( let i = 0; i < cells; i++ ) {
-		createEmptyTableCell( writer, insertPosition, attributes );
+		createEmptyTableCell( writer, insertPosition, attributes, isLeft);
 	}
 }
 
 // Evenly distributes the span of a cell to a number of provided cells.
-// The resulting spans will always be integer values.
+// The resulting spans will always be integer values. 
 //
 // For instance breaking a span of 7 into 3 cells will return:
 //

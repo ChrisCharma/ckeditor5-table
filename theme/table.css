@@ -5,13 +5,15 @@
 
 .ck-content .table {
 	/* Give the table widget some air and center it horizontally */
-	margin: 1em auto;
+	/* margin: 1em auto; */
 	display: table;
+	min-width: 150px;
 
 	& table {
 		/* The table cells should have slight borders */
 		border-collapse: collapse;
 		border-spacing: 0;
+		background-color: blue;
 
 		/* Table width and height are set on the parent <figure>. Make sure the table inside stretches
 		to the full dimensions of the container (https://github.com/ckeditor/ckeditor5/issues/6186). */
@@ -30,7 +32,7 @@
 			/* The border is inherited from .ck-editor__nested-editable styles, so theoretically it's not necessary here.
 			However, the border is a content style, so it should use .ck-content (so it works outside the editor).
 			Hence, the duplication. See https://github.com/ckeditor/ckeditor5/issues/6314 */
-			border: 1px solid hsl(0, 0%, 75%);
+			/* border: 1px solid hsl(0, 0%, 75%); */
 		}
 
 		& th {
@@ -38,6 +40,57 @@
 			background: hsla(0, 0%, 0%, 5%);
 		}
 	}
+}
+
+.bubble-right, .bubble-left{
+	display: flex;
+}
+
+.bubble-left{
+	text-align: left;
+	
+}
+
+.bubble-right{
+	text-align: right;
+}
+.bubble-right.ck-editor__nested-editable_focused, 
+.bubble-left.ck-editor__nested-editable_focused
+{
+	background-color: inherit!important;
+	box-shadow: none!important;
+	border: none!important;
+}
+
+/* td.ck-editor__nested-editable_focused{
+	outline: none!important;
+} */
+
+.bubble-right:focus, .bubble-left:focus{
+	background-color: inherit!important;
+}
+
+.bubble-right p, .bubble-left p{
+	max-width: 60%;
+	border-radius: 15px;
+	background-color: aquamarine;
+	margin: 2px;
+	padding: 6px 10px;
+}
+
+.bubble-left p{
+	margin-right: auto;
+}
+.bubble-right p{
+	margin-left: auto;
+}
+
+td{
+	width: 200px;
+}
+
+.disable{
+	background-color: inherit;
 }
 
 /* Text alignment of the table header should match the editor settings and override the native browser styling,

@@ -49,9 +49,9 @@ export default class InsertTableCommand extends Command {
 		const model = this.editor.model;
 		const selection = model.document.selection;
 		const tableUtils = this.editor.plugins.get( 'TableUtils' );
-
-		const rows = parseInt( options.rows ) || 2;
-		const columns = parseInt( options.columns ) || 2;
+		
+		const rows = 1;
+		const columns = 1;
 
 		const insertPosition = findOptimalInsertionPosition( selection, model );
 

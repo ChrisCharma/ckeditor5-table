@@ -141,29 +141,43 @@ export default class TableUI extends Plugin {
 				{
 					type: 'button',
 					model: {
-						commandName: 'insertTableRowBelow',
-						label: t( 'Insert row below' )
+						commandName: 'insertTableRowBelowLeft',
+						label: t( 'Insert recipient message below' )
 					}
 				},
 				{
 					type: 'button',
 					model: {
-						commandName: 'insertTableRowAbove',
-						label: t( 'Insert row above' )
+						commandName: 'insertTableRowAboveLeft',
+						label: t( 'Insert recipient message above' )
+					}
+				},
+				{
+					type: 'button',
+					model: {
+						commandName: 'insertTableRowAboveRight',
+						label: t( 'Insert sender message above' )
+					}
+				},
+				{
+					type: 'button',
+					model: {
+						commandName: 'insertTableRowBelowRight',
+						label: t( 'Insert sender message below' )
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'removeTableRow',
-						label: t( 'Delete row' )
+						label: t( 'Delete message' )
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'selectTableRow',
-						label: t( 'Select row' )
+						label: t( 'Select message' )
 					}
 				}
 			];

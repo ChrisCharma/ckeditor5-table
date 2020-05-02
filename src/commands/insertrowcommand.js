@@ -44,7 +44,9 @@ export default class InsertRowCommand extends Command {
 		 * @readonly
 		 * @member {String} module:table/commands/insertrowcommand~InsertRowCommand#order
 		 */
+		
 		this.order = options.order || 'below';
+		this.position = options.position || 'right';
 	}
 
 	/**
@@ -70,16 +72,18 @@ export default class InsertRowCommand extends Command {
 		const selection = editor.model.document.selection;
 		const tableUtils = editor.plugins.get( 'TableUtils' );
 		const insertAbove = this.order === 'above';
+		const insertLeft = this.position === 'left';
 
 		const referencePosition = insertAbove ? selection.getFirstPosition() : selection.getLastPosition();
 		const referenceRange = insertAbove ? selection.getFirstRange() : selection.getLastRange();
 
 		const tableCell = referenceRange.getContainedElement() || findAncestor( 'tableCell', referencePosition );
 		const tableRow = tableCell.parent;
+		
 		const table = tableRow.parent;
 
 		const row = table.getChildIndex( tableRow );
 
-		tableUtils.insertRows( table, { rows: 1, at: this.order === 'below' ? row + 1 : row } );
+		tableUtils.insertRows( table, { rows: 1, at: this.order === 'below' ? row + 1 : row, isLeft: insertLeft } );
 	}
 }

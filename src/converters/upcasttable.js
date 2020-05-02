@@ -117,9 +117,10 @@ export function upcastTableCell( elementName ) {
 			conversionApi.convertChildren( viewTableCell, modelCursor );
 
 			// Ensure a paragraph in the model for empty table cells.
-			if ( !tableCell.childCount ) {
-				conversionApi.writer.insertElement( 'paragraph', modelCursor );
-			}
+			// Unfold team thinks this is not necessary because we use a div with paragraph in every cell.
+			// if ( !tableCell.childCount ) {
+			// 	conversionApi.writer.insertElement( 'paragraph', modelCursor );
+			// }
 
 			// Set conversion result range.
 			data.modelRange = conversionApi.writer.createRange(
