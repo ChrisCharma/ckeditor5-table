@@ -47,12 +47,13 @@
 }
 
 .bubble-left{
+	justify-content: left;
 	text-align: left;
 	
 }
 
 .bubble-right{
-	text-align: right;
+	justify-content: right;
 }
 .bubble-right.ck-editor__nested-editable_focused, 
 .bubble-left.ck-editor__nested-editable_focused

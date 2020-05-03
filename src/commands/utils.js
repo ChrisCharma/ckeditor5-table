@@ -55,7 +55,6 @@ export function updateNumericAttribute( key, value, item, writer, defaultValue =
  */
 export function createEmptyTableCell( writer, insertPosition, attributes = {}, isLeft ) {
 	const tableCell = writer.createElement( 'tableCell', attributes );
-
 	if(isLeft){
 		const divisionLeft = writer.createElement('divisionLeft');
 		writer.append(divisionLeft,tableCell);

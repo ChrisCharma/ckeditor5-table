@@ -122,8 +122,7 @@ export default class TableUtils extends Plugin {
 
 		const insertAt = options.at || 0;
 		const rowsToInsert = options.rows || 1;
-		const isleft = options.isLeft || false;
-
+		const isLeft = options.isLeft || false;
 		model.change( writer => {
 			const headingRows = table.getAttribute( 'headingRows' ) || 0;
 
@@ -134,8 +133,8 @@ export default class TableUtils extends Plugin {
 
 			// Inserting at the end and at the beginning of a table doesn't require to calculate anything special.
 			if ( insertAt === 0 || insertAt === table.childCount ) {
-				createEmptyRows( writer, table, insertAt, rowsToInsert, this.getColumns( table ) );
-
+				createEmptyRows( writer, table, insertAt, rowsToInsert, this.getColumns( table ),{},isLeft );
+				console.log("in ig");
 				return;
 			}
 
@@ -163,7 +162,7 @@ export default class TableUtils extends Plugin {
 				}
 			}
 
-			createEmptyRows( writer, table, insertAt, rowsToInsert, cellsToInsert, isLeft );
+			createEmptyRows( writer, table, insertAt, rowsToInsert, cellsToInsert,{}, isLeft );
 		} );
 	}
 
@@ -697,7 +696,7 @@ export default class TableUtils extends Plugin {
 // @param {Number} rows The number of rows to create.
 // @param {Number} tableCellToInsert The number of cells to insert in each row.
 function createEmptyRows( writer, table, insertAt, rows, tableCellToInsert, attributes = {} , isLeft) {
-	
+
 		const tableRow = writer.createElement( 'tableRow' );
 
 		writer.insert( tableRow, table, insertAt );

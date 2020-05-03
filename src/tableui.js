@@ -19,6 +19,7 @@ import tableIcon from './../theme/icons/table.svg';
 import tableColumnIcon from './../theme/icons/table-column.svg';
 import tableRowIcon from './../theme/icons/table-row.svg';
 import tableMergeCellIcon from './../theme/icons/table-merge-cell.svg';
+import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
 /**
  * The table UI plugin. It introduces:
@@ -44,43 +45,20 @@ export default class TableUI extends Plugin {
 
 		editor.ui.componentFactory.add( 'insertTable', locale => {
 			const command = editor.commands.get( 'insertTable' );
-			const dropdownView = createDropdown( locale );
-
-			dropdownView.bind( 'isEnabled' ).to( command );
+			const buttonView = new ButtonView(locale);
 
 			// Decorate dropdown's button.
-			dropdownView.buttonView.set( {
+			buttonView.set( {
 				icon: tableIcon,
 				label: t( 'Insert table' ),
 				tooltip: true
 			} );
+            buttonView.bind( 'isOn', 'isEnabled' ).to( command, 'value', 'isEnabled' );
 
-			let insertTableView;
+			this.listenTo( buttonView, 'execute', () => editor.execute( 'insertTable' ) );
 
-			dropdownView.on( 'change:isOpen', () => {
-				if ( insertTableView ) {
-					return;
-				}
 
-				// Prepare custom view for dropdown's panel.
-				insertTableView = new InsertTableView( locale );
-				dropdownView.panelView.children.add( insertTableView );
-
-				insertTableView.delegate( 'execute' ).to( dropdownView );
-
-				dropdownView.buttonView.on( 'open', () => {
-					// Reset the chooser before showing it to the user.
-					insertTableView.rows = 0;
-					insertTableView.columns = 0;
-				} );
-
-				dropdownView.on( 'execute', () => {
-					editor.execute( 'insertTable', { rows: insertTableView.rows, columns: insertTableView.columns } );
-					editor.editing.view.focus();
-				} );
-			} );
-
-			return dropdownView;
+			return buttonView;
 		} );
 
 		editor.ui.componentFactory.add( 'tableColumn', locale => {
@@ -142,28 +120,28 @@ export default class TableUI extends Plugin {
 					type: 'button',
 					model: {
 						commandName: 'insertTableRowBelowLeft',
-						label: t( 'Insert recipient message below' )
+						label: t( 'Insert sender message below' )
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'insertTableRowAboveLeft',
-						label: t( 'Insert recipient message above' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: 'insertTableRowAboveRight',
 						label: t( 'Insert sender message above' )
 					}
 				},
 				{
 					type: 'button',
 					model: {
+						commandName: 'insertTableRowAboveRight',
+						label: t( 'Insert recipient message above' )
+					}
+				},
+				{
+					type: 'button',
+					model: {
 						commandName: 'insertTableRowBelowRight',
-						label: t( 'Insert sender message below' )
+						label: t( 'Insert recipient message below' )
 					}
 				},
 				{

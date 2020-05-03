@@ -106,12 +106,12 @@ export default class TableEditing extends Plugin {
 			}
 		} );
 
-		// //Disallow paragraph in table cells
-		// schema.addChildCheck( ( context, childDefinition ) => {
-		// 	if ( childDefinition.name == 'p' || childDefinition.name == 'paragraph' && Array.from( context.getNames() ).includes( 'td' ) ) {
-		// 		return false;
-		// 	}
-		// } );
+		//Disallow paragraph in table cells
+		schema.addChildCheck( ( context, childDefinition ) => {
+			if ( childDefinition.name != 'paragraph' && Array.from( context.getNames() ).includes( 'td' ) ) {
+				return false;
+			}
+		} );
 
 		// Conversion for the division to div
 		conversion.for('upcast').elementToElement({
