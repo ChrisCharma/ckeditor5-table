@@ -223,11 +223,11 @@ export default class TableEditing extends Plugin {
 		editor.commands.add( 'insertTableRowBelowLeft', new InsertRowCommand( editor, { order: 'below', position: 'left' } ) );
 		editor.commands.add( 'insertTableRowAboveRight', new InsertRowCommand( editor, { order: 'above', position: 'right'} ) );
 		editor.commands.add( 'insertTableRowBelowRight', new InsertRowCommand( editor, { order: 'below', position: 'right'} ) );
-		editor.commands.add( 'insertTableColumnLeft', new InsertColumnCommand( editor, { order: 'left' } ) );
-		editor.commands.add( 'insertTableColumnRight', new InsertColumnCommand( editor, { order: 'right' } ) );
+		// editor.commands.add( 'insertTableColumnLeft', new InsertColumnCommand( editor, { order: 'left' } ) );
+		// editor.commands.add( 'insertTableColumnRight', new InsertColumnCommand( editor, { order: 'right' } ) );
 
 		editor.commands.add( 'removeTableRow', new RemoveRowCommand( editor ) );
-		editor.commands.add( 'removeTableColumn', new RemoveColumnCommand( editor ) );
+		// editor.commands.add( 'removeTableColumn', new RemoveColumnCommand( editor ) );
 
 		editor.commands.add( 'splitTableCellVertically', new SplitCellCommand( editor, { direction: 'vertically' } ) );
 		editor.commands.add( 'splitTableCellHorizontally', new SplitCellCommand( editor, { direction: 'horizontally' } ) );

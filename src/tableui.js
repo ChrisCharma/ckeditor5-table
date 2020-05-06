@@ -61,60 +61,60 @@ export default class TableUI extends Plugin {
 			return buttonView;
 		} );
 
-		editor.ui.componentFactory.add( 'tableColumn', locale => {
-			const options = [
-				{
-					type: 'switchbutton',
-					model: {
-						commandName: 'setTableColumnHeader',
-						label: t( 'Header column' ),
-						bindIsOn: true
-					}
-				},
-				{ type: 'separator' },
-				{
-					type: 'button',
-					model: {
-						commandName: isContentLtr ? 'insertTableColumnLeft' : 'insertTableColumnRight',
-						label: t( 'Insert column left' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: isContentLtr ? 'insertTableColumnRight' : 'insertTableColumnLeft',
-						label: t( 'Insert column right' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: 'removeTableColumn',
-						label: t( 'Delete column' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: 'selectTableColumn',
-						label: t( 'Select column' )
-					}
-				}
-			];
+		// editor.ui.componentFactory.add( 'tableColumn', locale => {
+		// 	const options = [
+		// 		{
+		// 			type: 'switchbutton',
+		// 			model: {
+		// 				commandName: 'setTableColumnHeader',
+		// 				label: t( 'Header column' ),
+		// 				bindIsOn: true
+		// 			}
+		// 		},
+		// 		{ type: 'separator' },
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: isContentLtr ? 'insertTableColumnLeft' : 'insertTableColumnRight',
+		// 				label: t( 'Insert column left' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: isContentLtr ? 'insertTableColumnRight' : 'insertTableColumnLeft',
+		// 				label: t( 'Insert column right' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: 'removeTableColumn',
+		// 				label: t( 'Delete column' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: 'selectTableColumn',
+		// 				label: t( 'Select column' )
+		// 			}
+		// 		}
+		// 	];
 
-			return this._prepareDropdown( t( 'Column' ), tableColumnIcon, options, locale );
-		} );
+		// 	return this._prepareDropdown( t( 'Column' ), tableColumnIcon, options, locale );
+		// } );
 
 		editor.ui.componentFactory.add( 'tableRow', locale => {
 			const options = [
-				{
-					type: 'switchbutton',
-					model: {
-						commandName: 'setTableRowHeader',
-						label: t( 'Header row' ),
-						bindIsOn: true
-					}
-				},
+				// {
+				// 	type: 'switchbutton',
+				// 	model: {
+				// 		commandName: 'setTableRowHeader',
+				// 		label: t( 'Header row' ),
+				// 		bindIsOn: true
+				// 	}
+				// },
 				{ type: 'separator' },
 				{
 					type: 'button',
@@ -163,55 +163,55 @@ export default class TableUI extends Plugin {
 			return this._prepareDropdown( t( 'Row' ), tableRowIcon, options, locale );
 		} );
 
-		editor.ui.componentFactory.add( 'mergeTableCells', locale => {
-			const options = [
-				{
-					type: 'button',
-					model: {
-						commandName: 'mergeTableCellUp',
-						label: t( 'Merge cell up' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: isContentLtr ? 'mergeTableCellRight' : 'mergeTableCellLeft',
-						label: t( 'Merge cell right' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: 'mergeTableCellDown',
-						label: t( 'Merge cell down' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: isContentLtr ? 'mergeTableCellLeft' : 'mergeTableCellRight',
-						label: t( 'Merge cell left' )
-					}
-				},
-				{ type: 'separator' },
-				{
-					type: 'button',
-					model: {
-						commandName: 'splitTableCellVertically',
-						label: t( 'Split cell vertically' )
-					}
-				},
-				{
-					type: 'button',
-					model: {
-						commandName: 'splitTableCellHorizontally',
-						label: t( 'Split cell horizontally' )
-					}
-				}
-			];
+		// editor.ui.componentFactory.add( 'mergeTableCells', locale => {
+		// 	const options = [
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: 'mergeTableCellUp',
+		// 				label: t( 'Merge cell up' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: isContentLtr ? 'mergeTableCellRight' : 'mergeTableCellLeft',
+		// 				label: t( 'Merge cell right' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: 'mergeTableCellDown',
+		// 				label: t( 'Merge cell down' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: isContentLtr ? 'mergeTableCellLeft' : 'mergeTableCellRight',
+		// 				label: t( 'Merge cell left' )
+		// 			}
+		// 		},
+		// 		{ type: 'separator' },
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: 'splitTableCellVertically',
+		// 				label: t( 'Split cell vertically' )
+		// 			}
+		// 		},
+		// 		{
+		// 			type: 'button',
+		// 			model: {
+		// 				commandName: 'splitTableCellHorizontally',
+		// 				label: t( 'Split cell horizontally' )
+		// 			}
+		// 		}
+		// 	];
 
-			return this._prepareMergeSplitButtonDropdown( t( 'Merge cells' ), tableMergeCellIcon, options, locale );
-		} );
+		// 	return this._prepareMergeSplitButtonDropdown( t( 'Merge cells' ), tableMergeCellIcon, options, locale );
+		// } );
 	}
 
 	/**
