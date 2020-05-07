@@ -57,6 +57,11 @@
 .bubble-right{
 	justify-content: right;
 }
+
+td.ck-editor__nested-editable:focus {
+	background-color: inherit!important;
+}
+
 .bubble-right.ck-editor__nested-editable_focused, 
 .bubble-left.ck-editor__nested-editable_focused
 {
